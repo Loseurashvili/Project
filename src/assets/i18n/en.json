@@ -1,0 +1,11 @@
+{
+    "REGISTER": "Register",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "CONFIRM_PASSWORD": "Confirm Password",
+    "JOB": "Job",
+    "SUBMIT": "Submit",
+    "SIGNUP_MESSAGE": "Sign Up PLEASE"
+}

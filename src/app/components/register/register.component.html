@@ -1,0 +1,64 @@
+<nav>
+    <button (click)="login()" class="nav-btns">Shift Controller</button>
+</nav>
+
+<div id="center">
+<form class="form" [formGroup]="registrationForm" (ngSubmit)="Register">
+    <p class="title">{{'REGISTER' | translate}} </p>
+    
+    <label for="firstName">
+        <input class="input" type="text" id="firstName" formControlName="firstName" required="" placeholder="{{'FIRST_NAME' | translate}}">
+        <div *ngIf="registrationForm.get('firstName')?.invalid && registrationForm.get('firstName')?.touched">
+            <small style="color: red; font-size: 12px; font-weight: bold; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" 
+             class="text-danger"> *Enter Your First Name</small>
+        </div>
+    </label>
+
+    <label for="lastName">
+        <input class="input" type="text" id="lastName" formControlName="lastName" required="" placeholder="{{'LAST_NAME' | translate}}">
+        <div *ngIf="registrationForm.get('lastName')?.invalid && registrationForm.get('lastName')?.touched">
+            <small style="color: red; font-size: 12px; font-weight: bold; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" 
+             class="text-danger"> *Enter Your Last Name</small>
+        </div>
+    </label>
+
+    <label for="email">
+        <input class="input" type="text" id="email" formControlName="email" required="" placeholder="{{'EMAIL' | translate}}">
+        <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched">
+            <small style="color: red; font-size: 12px; font-weight: bold; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" 
+             class="text-danger"> *Enter Your Email</small>
+        </div>
+    </label>
+
+    <label for="password">
+        <input class="input" type="password" id="password" formControlName="password" required="" placeholder="{{'PASSWORD' | translate}}">
+        <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched">
+            <small style="color: red; font-size: 12px; font-weight: bold; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" 
+             class="text-danger"> *Enter Min 6 Characters</small>
+        </div>
+    </label>
+
+    <label for="confirmPassword">
+        <input class="input" type="password" id="confirmPassword" formControlName="confirmPassword" required="" placeholder="{{'CONFIRM_PASSWORD' | translate}}">
+        <div *ngIf="registrationForm.get('confirmPassword')?.invalid && registrationForm.get('confirmPassword')?.touched">
+            <small style="color: red; font-size: 12px; font-weight: bold; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" 
+             class="text-danger"> *Confirm Password Correctly</small>
+        </div>
+    </label>
+
+    <select *appUnless="jobOptions.length==0" class="input" id="jobId" formControlName="jobId">
+        <option value="" disabled selected hidden>{{'JOB' | translate}}</option>
+        <option class="input" *ngFor="let job of jobOptions" [ngValue]="job">{{job.title}}</option>
+    </select>
+    <div *ngIf="registrationForm.get('jobId')?.invalid && registrationForm.get('jobId')?.touched">
+        <small style="color: red; font-size: 12px; font-weight: bold; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" 
+         class="text-danger"> *Choose The Job Title</small>
+    </div>
+
+    <div id="last_buttons">
+        <button class="submit" (click)="Register()">{{'REGISTER' | translate}}</button>
+        <button id="backing" (click)="login()"> Back To Log In</button>
+    </div>
+
+</form>
+</div>

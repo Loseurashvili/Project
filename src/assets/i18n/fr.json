@@ -1,0 +1,12 @@
+{
+    "REGISTER": "S'inscrire",
+    "FIRST_NAME": "Prenom",
+    "LAST_NAME": "Non de familia",
+    "EMAIL": "Mail",
+    "PASSWORD": "mot de passe",
+    "CONFIRM_PASSWORD": "Confirmer de passe",
+    "JOB": "emploi",
+    "SUBMIT": "soumettre",
+    "SIGNUP_MESSAGE": "FRANGULAD: SIGN UP PLEASE"
+
+}

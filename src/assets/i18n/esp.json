@@ -1,0 +1,12 @@
+{
+"REGISTER": "Registracion",
+"FIRST_NAME": "Nombre",
+"LAST_NAME": "Apelidos",
+"EMAIL": "Mail",
+"PASSWORD": "Contrasena",
+"CONFIRM_PASSWORD": "Confirmacion de contrasena",
+"JOB": "Trabajar",
+"SUBMIT": "Claro",
+"SIGNUP_MESSAGE": "hACE REGISTRACION, POR FAVOR"
+
+}

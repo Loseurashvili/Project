@@ -1,0 +1,36 @@
+<nav>
+    <button (click)="LogIn()" class="nav-btns">Shift Controller</button>
+</nav>
+
+<p>zvio</p>
+
+<div id="center">
+<form #form1 [formGroup] = "loginForm">
+    <h2>Log In</h2>
+
+    <label id="email-label" for="email">
+        <label for="email">Email:</label><br>
+        <input class="input" type="text" id="email" formControlName="email" required="" placeholder="{{'EMAIL' | translate}}">
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+            <small style="color: red; font-size: 12px; font-weight: bold; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" 
+             class="text-danger"> *Enter Your Email</small>
+        </div>
+    </label>
+
+    <label id="pass-label" for="password">
+        <label for="password">Password:</label> <br>
+        <input class="input" type="password" id="password" formControlName="password" required="" placeholder="{{'PASSWORD' | translate}}">
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+            <small style="color: red; font-size: 12px; font-weight: bold; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" 
+             class="text-danger"> *Enter Min 6 Characters</small>
+        </div>
+    </label>
+    <br>
+
+    <div id="last_buttons">
+        <button id="login-bt" (click)="LogIn()">Log In</button>
+        <button id="signup-bt" (click)="goToRegister()">Register</button>
+    </div>
+
+</form>
+</div>
