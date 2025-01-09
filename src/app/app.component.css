@@ -1,0 +1,21 @@
+button {
+margin: 50px;
+background-color: rgb(223, 220, 220);
+box-shadow: 4px 3px 3px #969292;
+border: none;
+width: 80px;
+height: 20px;
+border-radius: 6px;
+
+}
+
+button:hover {
+    box-shadow: none;
+    color: white;
+    background-color: #575555;
+}
+
+div {
+    height: max-content;
+    margin-left: 33%;
+}
