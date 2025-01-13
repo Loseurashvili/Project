@@ -12,12 +12,12 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 
 const routes: Routes = [
 
-  {path: 'register', component: RegisterComponent},
-  {path: 'schedule', component: ScheduleComponent, canActivate:[WorkerGuard], canDeactivate:[WorkerDeGuard] },
-  {path: 'login', component: LoginComponent},
-  {path: 'admin', component: AdminComponent},
-  {path: 'worker', component: WorkerComponent, canActivate:[WorkerGuard], canDeactivate:[WorkerDeGuard]},
-  {path: '', redirectTo: '/login', pathMatch:'full'},
+  { path: 'register', component: RegisterComponent },
+  //{ path: 'schedule', component: ScheduleComponent, canActivate: [WorkerGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'worker', component: WorkerComponent, canActivate: [WorkerGuard] },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
 
 ];
 

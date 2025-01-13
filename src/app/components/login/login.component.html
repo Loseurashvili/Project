@@ -1,35 +1,32 @@
-<nav>
-    <button (click)="LogIn()" class="nav-btns">Shift Controller</button>
-</nav>
+<app-nav-bar></app-nav-bar>
 
 
-<div id="center">
-<form #form1 [formGroup] = "loginForm">
-    <h2>Log In</h2>
+<div id="center" class="container mt-5">
+  <form #form1 [formGroup]="loginForm" class="p-4 border rounded shadow bg-light">
+    <h2 class="text-center mb-4">Log In</h2>
 
-    <label id="email-label" for="email">
-        <label for="email">Email:</label><br>
-        <input class="input" type="text" id="email" formControlName="email" required="" placeholder="{{'EMAIL' | translate}}">
-        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
-            <small style="color: red; font-size: 12px; font-weight: bold; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" 
-             class="text-danger"> *Enter Your Email</small>
-        </div>
-    </label>
-
-    <label id="pass-label" for="password">
-        <label for="password">Password:</label> <br>
-        <input class="input" type="password" id="password" formControlName="password" required="" placeholder="{{'PASSWORD' | translate}}">
-        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-            <small style="color: red; font-size: 12px; font-weight: bold; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" 
-             class="text-danger"> *Enter Min 6 Characters</small>
-        </div>
-    </label>
-    <br>
-
-    <div id="last_buttons">
-        <button id="login-bt" (click)="LogIn()">Log In</button>
-        <button id="signup-bt" (click)="goToRegister()">Register</button>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email:</label>
+      <input type="text" id="email" formControlName="email" class="form-control" placeholder="{{'EMAIL' | translate}}"
+        required>
+      <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger mt-1">
+        <small>*Enter Your Email</small>
+      </div>
     </div>
 
-</form>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password:</label>
+      <input type="password" id="password" formControlName="password" class="form-control"
+        placeholder="{{'PASSWORD' | translate}}" required>
+      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger mt-1">
+        <small>*Enter Min 6 Characters</small>
+      </div>
+      <div *ngIf="error" class="text-danger mt-1"><small>Error Occured</small></div>
+    </div>
+    <!-- Buttons -->
+    <div class="d-flex justify-content-between">
+      <button (click)="LogIn()" class="btn btn-success">Log In</button>
+      <button (click)="goToRegister()" class="btn btn-secondary">Register</button>
+    </div>
+  </form>
 </div>

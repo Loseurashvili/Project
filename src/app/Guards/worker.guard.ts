@@ -6,19 +6,19 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class WorkerGuard implements CanActivate {
-  constructor(private router: Router){}
+  constructor(private router: Router) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
     const worker = true;
-    
-    if(worker){
+
+    if (worker) {
       return true;
     }
-    else{
+    else {
       this.router.navigate(['/register']);
       return false;
     }
-    }
-  
+  }
+
 }

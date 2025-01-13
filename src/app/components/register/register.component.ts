@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Job } from 'src/app/interfaces/job';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';  
-import { ReactiveFormsModule } from '@angular/forms';  
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +21,7 @@ export class RegisterComponent {
     private userService: UserService,
     private router: Router,
 
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.fetchJobOptions;
@@ -36,7 +36,7 @@ export class RegisterComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
-      jobId: [null, Validators.required]
+      jobId: ['', Validators.required]
     });
   }
 
@@ -47,13 +47,14 @@ export class RegisterComponent {
       console.log("here")
       this.userService.registerUser({ ...userData, jobId: job.id }).subscribe({
         next: (response) => {
-          console.log("Registration successful: ",response);
+
+          console.log("Registration successful: ", response);
           this.router.navigate(['/login']);
 
         },
         error: (error) => {
-          
-      console.log("hereeee")
+
+          console.log("hereeee")
           console.log('Registration failed: ', error);
         }
       });
@@ -74,8 +75,8 @@ export class RegisterComponent {
   }
 
 
- login(): void{
-  this.router.navigate(['/login']);
- }
-  
+  login(): void {
+    this.router.navigate(['/login']);
+  }
+
 }

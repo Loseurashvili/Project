@@ -7,11 +7,12 @@ import { WorkerComponent } from '../components/worker/worker.component';
   providedIn: 'root'
 })
 export class WorkerDeGuard implements CanDeactivate<WorkerComponent> {
-  
+
   canDeactivate(component: WorkerComponent, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot,
-    nextState: RouterStateSnapshot){
-      return component.canExit();
-    }
+    nextState: RouterStateSnapshot) {
+    return true;
+    //return component.canExit();
   }
-  
+}
+
 

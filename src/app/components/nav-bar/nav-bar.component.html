@@ -1,0 +1,8 @@
+<nav class="d-flex justify-content-between align-items-center">
+  <button class="nav-btns">Shift Controller</button>
+  <div *ngIf="isLoggedIn()">
+    <button class="btn btn-danger" (click)="logOut()">
+      Log Out
+    </button>
+  </div>
+</nav>

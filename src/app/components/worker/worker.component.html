@@ -1,7 +1,35 @@
-
-<nav>
-    <button (click)="login()" class="nav-btns">Shift Controller</button>
-    <button (click)="logOut()" id="out">Log Out</button>
-</nav>
+<app-nav-bar></app-nav-bar>
 
 
+<div class="container mt-5 cont">
+
+  <h1 class="text-center">Worker</h1>
+
+
+  <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit()" class="p-4 border rounded shadow bg-light">
+    <h4 class="text-center mb-4">Choose Date</h4>
+
+    <!-- Date Picker -->
+    <div class="mb-3">
+      <label for="date" class="form-label">Date:</label>
+      <input type="date" id="date" class="form-control" formControlName="date" required>
+    </div>
+
+    <!-- Shift Selection -->
+    <div class="mb-3">
+      <label class="form-label">Shift:</label>
+      <div class="btn-group d-flex" role="group">
+        <input type="radio" class="btn-check" id="morning" formControlName="shift" value="Morning" />
+        <label class="btn btn-outline-primary" for="morning">Morning</label>
+
+        <input type="radio" class="btn-check" id="evening" formControlName="shift" value="Evening" />
+        <label class="btn btn-outline-primary" for="evening">Evening</label>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-success">Add Schedule</button>
+    </div>
+  </form>
+</div>

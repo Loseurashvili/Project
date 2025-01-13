@@ -13,6 +13,7 @@ import { WorkerComponent } from './components/worker/worker.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ScheduleComponent } from './components/schedule/schedule.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 export function HttpLoaderFactory(http:HttpClient): TranslateHttpLoader{
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -27,6 +28,7 @@ export function HttpLoaderFactory(http:HttpClient): TranslateHttpLoader{
     AdminComponent,
     WorkerComponent,
     ScheduleComponent,
+    NavBarComponent,
   ],
   imports: [
     BrowserModule,

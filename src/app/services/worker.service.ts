@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,11 @@ import { Injectable } from '@angular/core';
 })
 export class WorkerService {
 
-  constructor() { }
+  private apiUrl = 'https://localhost:44330/api/Worker/add-schedule-request';
+  constructor(private http: HttpClient) { }
+  requestSchedule(scheduleRequest: any) {
+    return this.http.post(this.apiUrl, scheduleRequest);
+  }
+
+
 }

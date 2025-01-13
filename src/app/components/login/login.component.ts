@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {Validators , FormBuilder, FormGroup} from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { TemplateRef } from '@angular/core';
@@ -14,76 +14,77 @@ import { AfterViewInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit, AfterViewInit {
-  @ViewChild('form1') form1:any;
-  userService!:UserService
+  @ViewChild('form1') form1: any;
+  userService!: UserService
   loginForm!: FormGroup;
+  error: boolean = false;
   constructor(
     private fb: FormBuilder,
-    userService:UserService,
+    userService: UserService,
     private router: Router,
-  ){
+  ) {
     this.userService = userService;
 
   }
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     console.log(this.form1)
   }
-ngOnInit():void{
+  ngOnInit(): void {
 
-  this.createForm();
-}
-  chemifunc = (response:any)=>{
+    this.createForm();
+  }
+  chemifunc = (response: any) => {
     console.log(response)
   }
-  createForm(){
+  createForm() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]]
     })
   }
-  responseHandler(response:any){
+  responseHandler(response: any) {
     console.log(response)
 
   }
-  LogIn(){
-    console.log()
-    if(this.loginForm.valid){
+  LogIn() {
+    if (this.loginForm.valid) {
       console.log(this.loginForm.value)
       const userData = this.loginForm.value;
-      this.userService.logInUser(userData).subscribe(this.chemifunc);
+      //      this.userService.logInUser(userData).subscribe(this.chemifunc);
       this.userService.logInUser(userData).subscribe({
-        next:(response) => {
+        next: (response) => {
           console.log('logged in succesfully: ', response);
           const jwtToken = response;
           localStorage.setItem('token', jwtToken);
           const decodedToken = this.decodeToken(jwtToken);
           const role = decodedToken?.['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
-          if(role==='1'){
+          if (role === '1') {
             this.router.navigate(['/admin']);
-          } else if (role ==='2'){
-            this.router.navigate(['/schedule']);
+          } else if (role === '2') {
+            this.router.navigate(['/worker']);
           } else {
             console.log('Login Failed')
           }
           console.log(this.loginForm.value)
         },
-        error:(error) =>{
+        error: (error) => {
+          this.error = true;
           console.log('Login failed: ', error);
         }
       })
     }
   }
 
-  goToRegister(){ 
+  goToRegister() {
     this.router.navigate(['/register']);
   }
 
-  logOut(){
+  logOut() {
     this.userService.logOut();
   }
 
-  private decodeToken(token: string): any{
-    try{
+  private decodeToken(token: string): any {
+    try {
       return JSON.parse(atob(token.split('.')[1]));
     } catch (e) {
       console.error('Error decoding JWT token', e);
